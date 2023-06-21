@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Products to review</h2>
+    <div class="grid-container">
+        {% for product in products %}
+            <div class="post">
+                <a href="{% url 'view_product' product.id %}">
+                    <h4>Billet : {{ product.title }}</h4>
+                    <img src="{{ product.photo.image.url }}">
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
