@@ -10,8 +10,8 @@
             <p>Vous êtes connecté en tant que {{ request.user }}.
                 <a href="{% url 'logout' %}">Se déconnecter</a>
             </p>
-        <p><a href="{% url 'home' %}">Accueil</a></p>
-        <p><a href="{% url 'create_product' %}">Écrire un billet</a></p>
+        <p><a href="{% url 'appreview:home' %}">Accueil</a></p>
+        <p><a href="{% url 'appreview:create_ticket' %}">Écrire un billet</a></p>
         {% endif %}
     </body>
 </html>

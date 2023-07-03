@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+	<section class="follower">
+		<div class="follower-box">
+			<div class="search-user">
+				<h2>Suivre d'autres utilisateurs</h2>
+
+				<form method="post">
+					{% csrf_token %}
+					{% for field in form %}
+						{{ field }}
+					{% endfor %}
+					<button type="submit">Envoyer</button>
+				</form>
+				<small style="color:red">{{ error_msg }}</small>
+				<br/>
+			</div>
+			<div class="following">
+				<h2>Abonnements</h2>
+				{% for user in users_following %}
+					<div class="user-item">
+						<p>{{ user.followed_user|title }}</p>
+						<a href="{% url 'appreview:unfollow' user.id %}">Désabonner</a><br/>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="followed-by">
+				<h2>Abonnés</h2>
+				{% for user in users_followed_by %}
+					<div>
+						<p>{{ user.user|title }}</p>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+
+{% endblock content %}

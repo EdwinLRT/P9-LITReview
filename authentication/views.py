@@ -12,9 +12,10 @@ def signup_page(request):
             user = form.save()
             message = 'Votre compte a bien été créé.'
             login(request, user)
-            return redirect(settings.LOGIN_REDIRECT_URL)
+            return redirect('appreview:home')  # Redirection vers la vue "home"
     return render(
         request, 'authentication/signup.html', context={'form': form, 'message': message})
+
 def login_page(request):
     form = forms.LoginForm()
     message = ''
@@ -28,11 +29,11 @@ def login_page(request):
             if user is not None:
                 login(request, user)
                 message = f'Bonjour, {user.username}! Vous êtes connecté.'
+                return redirect('appreview:home')  # Redirection vers la vue "home"
             else:
                 message = 'Identifiants invalides.'
     return render(
         request, 'authentication/login.html', context={'form': form, 'message': message})
-
 
 def logout_page(request):
     logout(request)

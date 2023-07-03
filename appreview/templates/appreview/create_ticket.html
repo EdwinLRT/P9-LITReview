@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+	<section class="form">
+		<div class="form-box">
+			<div>
+				<h1> Créer un ticket </h1>
+			</div>
+            <form method="post" enctype="multipart/form-data">
+                {{ photo_form.as_p }}
+                {{ ticket_form.as_p }}
+                {% csrf_token %}
+                <button type="submit" >Publier</button>
+            </form>
+		</div>
+	</section>
+
+
+{% endblock content %}
+
+

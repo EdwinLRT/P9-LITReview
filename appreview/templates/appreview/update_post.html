@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Mettre à jour le post</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if photo_form %}
+      {{ photo_form.as_p }}
+    {% endif %}
+    <button type="submit">Enregistrer</button>
+  </form>
+{% endblock %}

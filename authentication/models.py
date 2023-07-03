@@ -13,5 +13,9 @@ class User(AbstractUser):
     )
     profile_picture = models.ImageField()
     role = models.CharField(max_length=30, choices=ROLES_CHOICES, verbose_name='rôle', default=REVIEWER)
-    pass
-# Create your models here.
+    follows = models.ManyToManyField(
+        'self',
+        symmetrical=False,
+        verbose_name='suit',
+        blank=True,
+    )

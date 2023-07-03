@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Résultats de recherche</h2>
+  {% if users %}
+    <ul>
+      {% for user in users %}
+        <li>
+          <span>{{ user.username }}</span>
+          <form method="post" action="{% url 'appreview:follow_user' user.id %}">
+            {% csrf_token %}
+            <button type="submit">Suivre</button>
+          </form>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Aucun utilisateur trouvé.</p>
+  {% endif %}
+{% endblock %}
