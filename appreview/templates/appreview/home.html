@@ -1,20 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>Tickets des utilisateurs que vous suivez</h2>
-    <!-- Affichage des tickets des utilisateurs suivis -->
-    {% for ticket in followed_tickets %}
-        <!-- Afficher les détails du ticket ici -->
-        <h3>{{ ticket.title }}</h3>
-        <p>{{ ticket.description }}</p>
-    {% endfor %}
-    <h2>À découvrir</h2>
-    <!-- Affichage des tickets à découvrir -->
-    {% for ticket in discover_tickets %}
-        <!-- Afficher les détails du ticket ici -->
-        <h3><a href="{% url 'appreview:view_ticket' ticket.id %}">{{ ticket.title }}</a></h3>
-        <p>{{ ticket.description }}</p>
-        <a href="{% url 'appreview:view_ticket' ticket.id %}"><img src="{{ ticket.photo.image.url }}" alt="{{ ticket.photo.title }}"></a>
-    {% endfor %}
+    <div class="container">
+        <h2>Tickets des utilisateurs que vous suivez</h2>
+        <div class="row">
+        <!-- Affichage des tickets des utilisateurs suivis -->
+        {% for ticket in followed_tickets %}
+            <!-- Afficher les détails du ticket ici -->
+            <div class="col-6">
+                <h3><a href="{% url 'appreview:view_ticket' ticket.id %}">{{ ticket.title }}</a></h3>
+                <p>{{ ticket.description }}</p>
+                <a href="{% url 'appreview:view_ticket' ticket.id %}"><img src="{{ ticket.photo.image.url }}" alt="{{ ticket.photo.title }}"></a>
+            </div>
+        {% endfor %}
+            </div>
+    </div>
+
+        <h2>À découvrir</h2>
+        <!-- Affichage des tickets à découvrir -->
+        {% for ticket in discover_tickets %}
+            <!-- Afficher les détails du ticket ici -->
+            <h3><a href="{% url 'appreview:view_ticket' ticket.id %}">{{ ticket.title }}</a></h3>
+            <p>{{ ticket.description }}</p>
+            <a href="{% url 'appreview:view_ticket' ticket.id %}"><img src="{{ ticket.photo.image.url }}" alt="{{ ticket.photo.title }}"></a>
+        {% endfor %}
+
 
 
     <h2>Nouvel article</h2>
