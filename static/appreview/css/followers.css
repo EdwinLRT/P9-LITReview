@@ -30,3 +30,34 @@ body > section > div > div.search-user > form > p {
     flex-direction: column;
     align-items: center;
 }
+
+.search-button button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 20px;
+    border-radius: 5px;
+    white-space: nowrap; /* Add this to prevent button text from wrapping */
+}
+
+
+.search-button button:hover {
+  background-color: white;
+  color: red;
+  border: 1px solid red;
+}
+.user-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    border: #8D99AE solid 1px;
+    background: #EDF2F4;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 2vh;
+}
+.user-item p{
+    margin: 0;
+}
