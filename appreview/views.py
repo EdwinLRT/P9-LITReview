@@ -65,6 +65,45 @@ def ticket_and_photo_upload(request):
     return render(request, 'appreview/create_ticket.html', context=context)
 
 
+def create_ticket_and_review(request):
+    photo_form = forms.PhotoForm()
+    ticket_form = forms.TicketForm()
+    comment_form = forms.ReviewForm()
+
+    if request.method == 'POST':
+        photo_form = forms.PhotoForm(request.POST, request.FILES)
+        ticket_form = forms.TicketForm(request.POST)
+        comment_form = forms.ReviewForm(request.POST)
+
+        if all([ticket_form.is_valid(), comment_form.is_valid(), photo_form.is_valid()]):
+            photo = photo_form.save(commit=False)
+            photo.uploader = request.user
+            photo.save()
+
+            ticket = ticket_form.save(commit=False)
+            ticket.author = request.user
+            ticket.save()
+
+            comment = comment_form.save(commit=False)
+            comment.ticket = ticket
+            comment.user = request.user
+            comment.save()
+
+            return redirect('appreview:home')
+
+    context = {
+        'photo_form': photo_form,
+        'ticket_form': ticket_form,
+        'comment_form': comment_form,
+    }
+    return render(request, 'appreview/create_ticket_and_review.html', context=context)
+
+
+
+
+
+
+
 @login_required
 def view_ticket(request, ticket_id):
     ticket = get_object_or_404(models.Ticket, id=ticket_id)
@@ -86,7 +125,7 @@ def view_ticket(request, ticket_id):
         'form': form,
     }
 
-    return render(request, 'appreview/view_product.html', context)
+    return render(request, 'appreview/view_ticket.html', context)
 
 
 @login_required
@@ -99,13 +138,9 @@ def ticket_review(request, slug):
     if request.method == 'POST':
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
-            # Create Comment object but don't save to database yet
             new_comment = comment_form.save(commit=False)
-            # Assign the current post to the comment
             new_comment.post = post
-
             new_comment.rating = request.POST.get('rating')
-            # Save the comment to the database
             new_comment.save()
     else:
         comment_form = CommentForm()
@@ -183,8 +218,12 @@ def update_post(request, post_type, post_id):
 
     context = {'form': form, 'photo_form': photo_form}
     return render(request, 'appreview/update_post.html', context)
+
+
+from django.contrib.auth.decorators import login_required
+
 @login_required
-def user_search(request):
+def followers(request):
     form = UserSearchForm()
 
     if request.method == 'POST':
@@ -195,16 +234,11 @@ def user_search(request):
             users = User.objects.filter(username__icontains=search_query)
             return render(request, 'appreview/user_search_results.html', {'users': users})
 
-    return render(request, 'appreview/user_search.html', {'form': form})
-
-
-@login_required
-def followers(request):
-    # Récupérer les informations sur l'utilisateur
     users_following = UserFollows.objects.filter(user=request.user)
     users_followed_by = UserFollows.objects.filter(followed_user=request.user)
 
     context = {
+        "form": form,
         "users_following": users_following,
         "users_followed_by": users_followed_by,
     }

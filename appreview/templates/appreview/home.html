@@ -1,37 +1,60 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-    <div class="container">
-        <h2>Tickets des utilisateurs que vous suivez</h2>
-        <div class="row">
-        <!-- Affichage des tickets des utilisateurs suivis -->
-        {% for ticket in followed_tickets %}
-            <!-- Afficher les détails du ticket ici -->
-            <div class="col-6">
-                <h3><a href="{% url 'appreview:view_ticket' ticket.id %}">{{ ticket.title }}</a></h3>
-                <p>{{ ticket.description }}</p>
-                <a href="{% url 'appreview:view_ticket' ticket.id %}"><img src="{{ ticket.photo.image.url }}" alt="{{ ticket.photo.title }}"></a>
-            </div>
-        {% endfor %}
-            </div>
+<head>
+    <link rel="stylesheet" href="{% static 'appreview/css/home.css' %}">
+</head>
+<div class="feed">
+    <h2>Tickets from users you follow</h2>
+    <div class="followed-users">
+
+            {% for ticket in followed_tickets %}
+                <div class="ticket">
+                    <div class="left-column">
+                        <a href="{% url 'appreview:view_ticket' ticket.id %}"><img src="{{ ticket.photo.image.url }}"
+                                                                               alt="{{ ticket.photo.title }}"></a>
+                    </div>
+                    <div class="right-column">
+                        <h3><a href="{% url 'appreview:view_ticket' ticket.id %}">{{ ticket.title }}</a></h3>
+                        <p>{{ ticket.content }}</p>
+                        <p>By {{ ticket.author }}</p>
+                        <p>Posted on {{ ticket.created_on }}</p>
+                    </div>
+                    <div class="review-button">
+                        <button onclick="window.location.href='{% url 'appreview:view_ticket' ticket.id %}'">
+                            Post a review
+                        </button>
+                    </div>
+
+
+                </div>
+            {% endfor %}
+
     </div>
 
-        <h2>À découvrir</h2>
-        <!-- Affichage des tickets à découvrir -->
+
+    </div>
+
+    <div class="discover">
+        <h2>Explore new tickets</h2>
+
         {% for ticket in discover_tickets %}
-            <!-- Afficher les détails du ticket ici -->
-            <h3><a href="{% url 'appreview:view_ticket' ticket.id %}">{{ ticket.title }}</a></h3>
-            <p>{{ ticket.description }}</p>
-            <a href="{% url 'appreview:view_ticket' ticket.id %}"><img src="{{ ticket.photo.image.url }}" alt="{{ ticket.photo.title }}"></a>
+        <h3><a href="{% url 'appreview:view_ticket' ticket.id %}">{{ ticket.title }}</a></h3>
+        <p>{{ ticket.description }}</p>
+        <a href="{% url 'appreview:view_ticket' ticket.id %}"><img src="{{ ticket.photo.image.url }}"
+                                                                   alt="{{ ticket.photo.title }}"></a>
         {% endfor %}
+    </div>
+
+</div>
 
 
-
-    <h2>Nouvel article</h2>
-    <form method="post" enctype="multipart/form-data">
-        {{ photo_form.as_p }}
-        {{ ticket_form.as_p }}
-        {% csrf_token %}
-        <button type="submit" >Publier</button>
-    </form>
+<h2>Nouvel article</h2>
+<form method="post" enctype="multipart/form-data">
+    {{ photo_form.as_p }}
+    {{ ticket_form.as_p }}
+    {% csrf_token %}
+    <button type="submit">Publier</button>
+</form>
 
 {% endblock content %}

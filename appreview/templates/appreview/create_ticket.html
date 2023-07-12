@@ -1,19 +1,24 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'appreview/css/create_ticket.css' %}">
+</head>
 
-	<section class="form">
-		<div class="form-box">
-			<div>
-				<h1> Créer un ticket </h1>
-			</div>
+<section class="form">
+    <div class="form-box">
+        <div class="container">
+            <h1> Create a ticket </h1>
+
             <form method="post" enctype="multipart/form-data">
                 {{ photo_form.as_p }}
                 {{ ticket_form.as_p }}
                 {% csrf_token %}
-                <button type="submit" >Publier</button>
+                <button type="submit">Send ticket</button>
             </form>
-		</div>
-	</section>
+        </div>
+    </div>
+</section>
 
 
 {% endblock content %}

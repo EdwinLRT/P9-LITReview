@@ -1,0 +1,33 @@
+.signup-form {
+  text-align: center;
+}
+
+.signup-form form {
+  display: inline-block;
+  text-align: left;
+}
+
+.signup-form label {
+  display: block;
+}
+
+.signup-form input,
+.signup-form select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.signup-form button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+}
+
+.signup-form button[type="submit"]:hover {
+  background-color: #45a049;
+}

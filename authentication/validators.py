@@ -3,17 +3,17 @@ class ContainsLetterValidator:
     def validate(self, password, user=None):
         if not any(char.isalpha() for char in password):
             raise ValidationError(
-                "Le mot de passe doit contenir au moins une lettre.",
+                "The password must contain at least one letter.",
                 code='password_no_letter',
             )
     def get_help_text(self):
-        return ("Le mot de passe doit contenir au moins une lettre.")
+        return ("The password must contain at least one letter.")
 class ContainsNumberValidator:
     def validate(self, password, user=None):
         if not any(char.isdigit() for char in password):
             raise ValidationError(
-                "Le mot de passe doit contenir au moins un chiffre.",
+                "The password must contain at least one digit.",
                 code='password_no_digit',
             )
     def get_help_text(self):
-        return ("Le mot de passe doit contenir au moins un chiffre.")
+        return ("The password must contain at least one digit.")

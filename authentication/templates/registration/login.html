@@ -8,12 +8,12 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <p>Vous n'avez pas de compte ? <a href="{% url 'authentication:signup' %}"><br>Inscrivez-vous maintenant !</a>
+            <p>Need a review ?<a href="{% url 'authentication:signup' %}"><br>Sign up NOW !</a>
             </p>
         </div>
         <div class="col">
-            <div class="form-box">
-                <h2>Connexion</h2>
+            <div class="login-form">
+                <h2>Log-in</h2>
                 <p>{{ message }}</p>
                 <form method="post">
                     {{ form.as_p }}

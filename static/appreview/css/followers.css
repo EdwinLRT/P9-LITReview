@@ -1,0 +1,32 @@
+.search-user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+body > section > div > div.search-user > form > p {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+}
+#id_search_query {
+    width: 20vw;
+    margin: 2vw;
+}
+
+.following{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.followed-by{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,12 +1,21 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-    <h2>Inscription</h2>
-    {% if form.errors %}
+<head>
+    <link rel="stylesheet" href="{% static 'authentication/css/signup.css' %}">
+</head>
+<div class="container">
+    <div class="signup-form">
+        <h2>Signup</h2>
+        {% if form.errors %}
         {{ form.errors }}
-    {% endif %}
-    <form method="post">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <button type="submit" >S’inscrire</button>
-    </form>
+        {% endif %}
+        <form method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button type="submit">S’inscrire</button>
+        </form>
+    </div>
+</div>
+
 {% endblock content %}

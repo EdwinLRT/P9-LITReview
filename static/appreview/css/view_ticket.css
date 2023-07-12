@@ -1,0 +1,77 @@
+.ticket{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.ticket h2{
+    font-size: 40px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.ticket-author-time{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+.ticket-image{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.product-infos{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+}
+.product-image{
+    min-width: 20%;
+    max-width: ;
+}
+.product-image img{
+    max-width: 14vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
+}
+.product-title-desc{
+    width: 50%;
+}
+.container {
+  width: 100%;
+}
+
+.review-form{
+    display: flex;
+    flex-direction: column;
+}
+input[type="text"], input[type="email"], input[type="password"] {
+  width: 100%;
+}
+#id_body {
+  width: 100%;
+}
+
+label {
+  display: block;
+}
+.button-right{
+    display: flex;
+    justify-content: flex-end;
+}
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
