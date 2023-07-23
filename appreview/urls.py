@@ -6,8 +6,8 @@ import appreview.views
 app_name = "appreview"
 urlpatterns = [
     path("", appreview.views.home, name="home"),
-    path("my_posts/", appreview.views.my_posts, name="my_posts"),
 
+    path("tickets/my_posts/", appreview.views.my_posts, name="my_posts"),
     path('ticket/create/', appreview.views.ticket_and_photo_upload, name='create_ticket'),
     path('ticket/<int:ticket_id>/add', appreview.views.ticket_review, name='ticket_review'),
     path('ticket/<int:ticket_id>/', appreview.views.view_ticket, name='view_ticket'),

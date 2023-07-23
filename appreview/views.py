@@ -199,7 +199,7 @@ def update_post(request, post_type, post_id):
     elif post_type == "review":
         post = get_object_or_404(Review, id=post_id)
         form = ReviewForm(instance=post)
-        photo_form = None  # Les reviews n'ont pas de photo associée, donc pas de formulaire pour la photo
+        photo_form = None
 
     if request.method == 'POST':
         form = TicketForm(request.POST, instance=post) if post_type == "ticket" else ReviewForm(request.POST, instance=post)

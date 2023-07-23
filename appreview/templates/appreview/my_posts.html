@@ -1,69 +1,90 @@
 {% extends 'base.html' %}
 {% load appreview_extras %}
-
-
+{% load static %}
 {% block content %}
-<section class="my-posts">
-    <div class="box">
-        <h1> MES POSTS</h1>
+<head>
+    <link rel="stylesheet" href="{% static 'appreview/css/my_posts.css' %}">
+</head>
 
-        {% for post in tickets_and_reviews %}
-        <div class="content">
 
-            {% if post|model_type == "Ticket" %}
-            <div class="content-top">
-                <p>Vous avez publié un ticket <br/></p>
-                <p class="time-created">{{ post.time_created }}<br/></p>
-            </div>
-            <h2>{{ post.title }}<br/></h2>
-            <div class="content-middle-ticket">
-                <p>{{ post.description }}<br/></p>
+    <h1> MES POSTS</h1>
+
+    {% for post in tickets_and_reviews %}
+        {% if post|model_type == "Ticket" %}
+<div class="post">
+
+        <div class="ticket">
+
+            <div class="left-column">
+
                 <img src={{ post.photo.image.url }} alt=""><br/>
             </div>
-            <div class="content-bottom">
-                <div class="action-buttons">
-                    {% if post|model_type == "Ticket" %}
-                    <a href="{% url 'appreview:update_post' 'ticket' post.id %}">MODIFIER</a>
-                    {% elif post|model_type == "Review" %}
-                    <a href="{% url 'appreview:update_post' 'review' post.id %}">MODIFIER</a>
-                    {% endif %}
-
-                    <a href="{% url 'appreview:delete_ticket' post.id %}">SUPPRIMER</a>
+            <div class="right-column">
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.content }}<br/></p>
+                <p>By {{ post.author }}</p>
+                <div class="content-top">
+                    <h5 class="time-created">You published this ticket on {{ post.created_on }}</h5>
                 </div>
             </div>
-
-            {% elif post|model_type == "Review" %}
-            <div class="content-top">
-                <p>Vous avez publié une critique <br/></p>
-                <p class="time-created">{{ post.time_created }}<br/></p>
-            </div>
-
-            <h2>{{ post.headline }} Note -
-                {% for num in post.rating|to_range %}
-                ⭑
-                {% endfor %}
-            </h2>
-            <div class="content-middle-review">
-                <p>{{ post.body|default:"Pas de description" }}<br/></p>
-            </div>
-            <div class="ticket_of_review">
-                <p>Ticket de {% get_poster_display post.ticket.author %}<br/></p>
-                <h2>{{ post.ticket.title }}<br/></h2>
-
-                <img src={{ post.ticket.photo.image.url }} alt="">
-            </div>
-            <div class="action-buttons">
+            <div class="action-button">
                 {% if post|model_type == "Ticket" %}
-                <a href="{% url 'appreview:update_post' 'ticket' post.id %}">MODIFIER</a>
+                <a href="{% url 'appreview:update_post' 'ticket' post.id %}">MODIFY</a>
                 {% elif post|model_type == "Review" %}
-                <a href="{% url 'appreview:update_post' 'review' post.id %}">MODIFIER</a>
+                <a href="{% url 'appreview:update_post' 'review' post.id %}">MODIFY</a>
                 {% endif %}
-                <a href="{% url 'appreview:delete_review' post.id %}">SUPPRIMER</a>
+
+                <a href="{% url 'appreview:delete_ticket' post.id %}">DELETE</a>
             </div>
-            {% endif %}
+
         </div>
-        {% endfor %}
+</div>
+
+
+    {% elif post|model_type == "Review" %}
+<div class="post">
+
+    <div class="ticket">
+        <div class="left-column">
+            <img src={{ post.ticket.photo.image.url }} alt="">
+        </div>
+        <div class="right-column">
+
+
+            <h3>{{ post.ticket.title }}</h3>
+            <p>{{ post.ticket.content }}<br/></p>
+            <p>By {{ post.ticket.author }}</p>
+
+            <div class="review">
+
+
+                <div class="review-rating">
+                    <h4>{{ post.headline }} Note -
+                        {% for num in post.rating|to_range %}
+                        ⭑
+                        {% endfor %}
+                    </h4>
+                </div>
+                <div class="review-content">
+                    <h5>{{ post.name|default:"Empty title..." }}<br/></h5>
+                    <p>{{ post.body|default:"Empty description..." }}<br/></p>
+                </div>
+                <h5 class="time-created">You published a review on {{ post.created_on }}</h5>
+            </div>
+        </div>
+
+
+        <div class="action-button">
+            {% if post|model_type == "Ticket" %}
+            <a href="{% url 'appreview:update_post' 'ticket' post.id %}">MODIFY</a>
+            {% elif post|model_type == "Review" %}
+            <a href="{% url 'appreview:update_post' 'review' post.id %}">MODIFY</a>
+            {% endif %}
+            <a href="{% url 'appreview:delete_review' post.id %}">DELETE</a>
+        </div>
     </div>
-</section>
+</div>
+    {% endif %}
+    {% endfor %}
 
 {% endblock content %}

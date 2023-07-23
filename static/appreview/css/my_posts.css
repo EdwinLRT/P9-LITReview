@@ -6,10 +6,11 @@
 .user-button > button{
     margin : 0 0.5vw;
 }
-.feed{
+.post{
     display: flex;
     flex-direction: column;
     margin: auto;
+    align-items: center;
 }
 .followed-users{
     display: flex;
@@ -60,14 +61,20 @@
   color: inherit;
 }
 
-.review-button{
+a {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Use the default text color */
+  cursor: pointer; /* Show pointer cursor on hover */
+}
+
+.action-button{
     position: absolute;
     bottom: 20px;
     right: 20px;
 }
 
 .user-button button,
-.review-button button {
+.action-button a {
     background-color: #D90429;
     color: white;
     border: 1px solid #D90429;
@@ -77,9 +84,16 @@
 }
 
 
-.user-button button:hover,
-.review-button button:hover {
+.user-button a:hover,
+.action-button a:hover {
   background-color: white;
   color: #D90429;
   border: 1px solid #D90429;
+}
+.review {
+    background: #FFF;
+    border: #D90429 solid 1px;
+    border-radius: 15px;
+    width: 100%;
+    padding: 1vh 1vw;
 }
