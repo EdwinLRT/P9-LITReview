@@ -216,6 +216,7 @@ def update_post(request, post_type, post_id):
             post.save()
             return redirect('appreview:my_posts')
 
+
     context = {'form': form, 'photo_form': photo_form}
     return render(request, 'appreview/update_post.html', context)
 
