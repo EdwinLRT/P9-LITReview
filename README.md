@@ -49,6 +49,16 @@ Login : admin
 Password : admin
 ```
 
+#### Testing accounts : 
+
+|  Usernames | Passwords  |
+|--|--|
+|  AAstier | Password1  |
+| EBaer | Password1 |
+| JCohen | Password1 |
+| admin | admin |
+
+
 
 ## Lessons Learned
 
