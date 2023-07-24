@@ -1,18 +1,62 @@
+/* appreview/css/create_ticket.css */
+
+.form {
+    padding: 20px;
+}
+
+.form-box {
+    margin: 0 auto;
+    max-width: 600px;
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    margin: 20px;
 }
 
-p {
-    margin: 30px;
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-body > section > div > div > form > button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
+.form-box label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-box input[type="text"],
+.form-box textarea,
+.form-box select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-box textarea {
+    resize: vertical;
+}
+
+.form-box button {
+    background-color: #D90429;
+    color: white;
+    border: 1px solid #D90429;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap; /* Add this to prevent button text from wrapping */
+}
+
+.form-box button:hover {
+    background-color: white;
+    color: #D90429;
+    border: 1px solid #D90429;
+}
+
+.button-right {
+    text-align: right;
 }

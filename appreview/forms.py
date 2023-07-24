@@ -17,10 +17,11 @@ class TicketForm(forms.ModelForm):
         fields = ['title', 'content']
 
 class ReviewForm(forms.ModelForm):
+    RATING_CHOICES = [(i, str(i)) for i in range(1, 6)]  # Les choix vont de 1 à 5
+    rating = forms.ChoiceField(choices=RATING_CHOICES, widget=forms.Select)
     class Meta:
         model = models.Review
-        fields = ['name','body']
-
+        fields = ['rating', 'name', 'body']
 
 class UserSearchForm(forms.Form):
     search_query = forms.CharField(label='Recherche d\'utilisateurs')

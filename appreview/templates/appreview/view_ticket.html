@@ -5,6 +5,7 @@
 <head>
     <link rel="stylesheet" href="{% static 'appreview/css/view_ticket.css' %}">
 </head>
+<section class="post">
 <div class="container">
     <div class="ticket">
         <div class="ticket-author-time">
@@ -19,51 +20,52 @@
                 <p>{{ ticket.content }}</p>
             </div>
         </div>
-
-
         <p>{{ ticket.photo.caption }}</p>
-
-
     </div>
 </div>
 
 <div class="container">
-    <h3>Comments</h3>
+    <h3>Reviews</h3>
     {% for review in reviews %}
-    <p>{{ review.name }}</p>
-    <p>{{ review.body }}</p>
-    <p>Note : {{ review.rating }}/5</p>
-    <p>Par {{ review.user }} le {{ review.created_on }}</p>
+    <div class="comment">
+        <p class="comment-name">{{ review.name }}</p>
+        <p class="comment-body">{{ review.body }}</p>
+        <p class="comment-rating">Rated : {{ review.rating }}/5</p>
+        <p class="comment-user-time">Par {{ review.user }} le {{ review.created_on }}</p>
 
-
-    {% if review.user == request.user %}
-    <form action="{% url 'appreview:delete_review' review.id %}" method="POST">
-        {% csrf_token %}
-        <button type="submit">Delete</button>
-    </form>
-    {% endif %}
+        {% if review.user == request.user %}
+        <form action="{% url 'appreview:delete_review' review.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="delete-button">Delete</button>
+        </form>
+        {% endif %}
+    </div>
     {% empty %}
-    <p>No comment yet, be the first to give your opinion !</p>
+    <p>No comment yet, be the first to give your opinion!</p>
     {% endfor %}
 </div>
-<div class="container">
-    <h3>Add a review</h3>
-    <div class="review-form">
-           <form method="post">        <label for="id_rating">Rating :</label>
-        <select name="rating" id="id_rating">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-        {% csrf_token %}
-        {{ form.as_p }}
-    <div class="button-right">
-        <button type="submit">Ajouter</button></div>
-    </form>
-    </div>
 
+<div class="container">
+    <h3>Give us your opinion !</h3>
+    <div class="review-form">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="button-right">
+                <button type="submit" class="action-button">Ajouter</button>
+            </div>
+        </form>
+    </div>
 </div>
 
+
+
+
+
+
+
+
+
+
+</section>
 {% endblock content %}

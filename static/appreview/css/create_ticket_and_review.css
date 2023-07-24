@@ -1,22 +1,58 @@
+/* appreview/css/create_ticket_and_review.css */
+
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding: 20px;
 }
 
-p {
-    display: flex;
-    flex-direction: column;
-    margin: 30px;
+.row {
+    margin: 0 auto;
+    max-width: 600px;
+    border: 1px solid #ccc;
+    padding: 20px;
 }
-label{
-    margin: 1vh;
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
 }
-button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
+
+.row label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.row input[type="text"],
+.row textarea,
+.row select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.row textarea {
+    resize: vertical;
+}
+
+.row button {
+    background-color: #D90429;
+    color: white;
+    border: 1px solid #D90429;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap; /* Add this to prevent button text from wrapping */
+}
+
+.row button:hover {
+    background-color: white;
+    color: #D90429;
+    border: 1px solid #D90429;
+}
+
+.button-right {
+    text-align: right;
 }

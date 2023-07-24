@@ -46,6 +46,11 @@ header{
 	color: #fff;
     border-radius: 5px;
 }
+.nav__item--login:hover {
+  background-color: white;
+  color: #D90429;
+  border: 1px solid #D90429;
+}
 
 footer{
 	margin-top: 50px;
