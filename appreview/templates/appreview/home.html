@@ -6,14 +6,14 @@
 </head>
 <div class="user">
     <div class="user-button">
-        <button onclick="window.location.href='{% url 'appreview:my_posts' %}'">
-            My Profile
-        </button>
+    <a href="{% url 'appreview:my_posts' %}">
+        <button>My Profile</button>
+    </a>
     </div>
     <div class="user-button">
-        <button onclick="window.location.href='{% url 'appreview:my_posts'%}'">
-            My Posts
-        </button>
+    <a href="{% url 'appreview:my_posts' %}">
+        <button>My Posts</button>
+    </a>
     </div>
 </div>
 <div class="feed">
@@ -33,9 +33,9 @@
                 <p>Posted on {{ ticket.created_on }}</p>
             </div>
             <div class="review-button">
-                <button onclick="window.location.href='{% url 'appreview:view_ticket' ticket.id %}'">
-                    Post a review
-                </button>
+            <a href="{% url 'appreview:view_ticket' ticket.id %}">
+                Post a review
+            </a>
             </div>
         </div>
         {% endfor %}
@@ -63,9 +63,9 @@
             <p>Posted on {{ ticket.created_on }}</p>
         </div>
         <div class="review-button">
-            <button onclick="window.location.href='{% url 'appreview:view_ticket' ticket.id %}'">
+            <a href="{% url 'appreview:view_ticket' ticket.id %}">
                 Post a review
-            </button>
+            </a>
         </div>
 
 

@@ -1,19 +1,16 @@
-from django.shortcuts import render
-
-# Create your views here.
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect, get_object_or_404
-from . import forms, models
-from authentication.models import User
-from .forms import ReviewForm, TicketForm, PhotoForm, UserSearchForm
-from .models import Review, Ticket, UserFollows
 from itertools import chain
+
+from authentication.models import User
 from django.contrib import messages
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
-
+from . import forms, models
+from .forms import ReviewForm, TicketForm, PhotoForm, UserSearchForm
+from .models import Review, Ticket, UserFollows
 
 
 @login_required
@@ -38,8 +35,8 @@ def home(request):
     discover_tickets = tickets.exclude(author__in=followed_users)
     followed_tickets = followed_users_tickets.order_by('-created_on')
     discover_tickets = discover_tickets.order_by('-created_on')
-    return render(request, 'appreview/home.html', context={'photos': photos, 'followed_tickets': followed_tickets, 'discover_tickets': discover_tickets})
-
+    return render(request, 'appreview/home.html', context={'photos': photos, 'followed_tickets': followed_tickets,
+                                                           'discover_tickets': discover_tickets})
 
 
 @login_required
@@ -97,11 +94,6 @@ def create_ticket_and_review(request):
         'comment_form': comment_form,
     }
     return render(request, 'appreview/create_ticket_and_review.html', context=context)
-
-
-
-
-
 
 
 @login_required
@@ -176,6 +168,7 @@ def delete_review(request, review_id):
         # Gérer le cas où l'utilisateur n'est pas autorisé à supprimer la critique
         return HttpResponseForbidden("Vous n'êtes pas autorisé à supprimer cette critique.")
 
+
 @login_required
 def my_posts(request):
     tickets = Ticket.objects.filter(author=request.user)
@@ -190,6 +183,7 @@ def my_posts(request):
     }
     return render(request, "appreview/my_posts.html", context=context)
 
+
 @login_required
 def update_post(request, post_type, post_id):
     if post_type == "ticket":
@@ -202,10 +196,13 @@ def update_post(request, post_type, post_id):
         photo_form = None
 
     if request.method == 'POST':
-        form = TicketForm(request.POST, instance=post) if post_type == "ticket" else ReviewForm(request.POST, instance=post)
-        photo_form = PhotoForm(request.POST, request.FILES, instance=post.photo) if post_type == "ticket" else None
+        if post_type == "ticket":
+            form = TicketForm(request.POST, instance=post)
+            photo_form = PhotoForm(request.POST, request.FILES, instance=post.photo)
+        elif post_type == "review":
+            form = ReviewForm(request.POST, instance=post)
 
-        if all([form.is_valid(), (photo_form is None or photo_form.is_valid())]):
+        if form.is_valid() and (photo_form is None or photo_form.is_valid()):
             post = form.save(commit=False)
             if post_type == "ticket":
                 if photo_form:
@@ -216,12 +213,15 @@ def update_post(request, post_type, post_id):
             post.save()
             return redirect('appreview:my_posts')
 
-
-    context = {'form': form, 'photo_form': photo_form}
-    return render(request, 'appreview/update_post.html', context)
+    context = {
+        'form': form,
+        'photo_form': photo_form,
+    }
+    return render(request, 'appreview/update_post.html', context=context)
 
 
 from django.contrib.auth.decorators import login_required
+
 
 @login_required
 def followers(request):
@@ -246,6 +246,7 @@ def followers(request):
 
     return render(request, "appreview/followers.html", context=context)
 
+
 @login_required
 def follow_user(request, user_id):
     user_to_follow = get_object_or_404(User, id=user_id)
@@ -261,6 +262,8 @@ def follow_user(request, user_id):
             return redirect(reverse('appreview:followers'))
 
     return render(request, 'appreview/follow_user.html', context={'user_to_follow': user_to_follow})
+
+
 @login_required
 def unfollow(request, user_id):
     user = get_object_or_404(UserFollows, id=user_id)

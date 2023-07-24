@@ -7,43 +7,43 @@
 </head>
 
 
-    <h1> MES POSTS</h1>
+<h1> MES POSTS</h1>
 
-    {% for post in tickets_and_reviews %}
-        {% if post|model_type == "Ticket" %}
+{% for post in tickets_and_reviews %}
+{% if post|model_type == "Ticket" %}
 <div class="post">
 
-        <div class="ticket">
+    <div class="ticket">
 
-            <div class="left-column">
+        <div class="left-column">
 
-                <img src={{ post.photo.image.url }} alt=""><br/>
-            </div>
-            <div class="right-column">
-                <a href="{% url 'appreview:view_ticket' post.id %}">
-                        <h3>{{ post.title }}</h3>
-                </a>
-                <p>{{ post.content }}<br/></p>
-                <p>By {{ post.author }}</p>
-                <div class="content-top">
-                    <h5 class="time-created">You published this ticket on {{ post.created_on }}</h5>
-                </div>
-            </div>
-            <div class="action-button">
-                {% if post|model_type == "Ticket" %}
-                <a href="{% url 'appreview:update_post' 'ticket' post.id %}">MODIFY</a>
-                {% elif post|model_type == "Review" %}
-                <a href="{% url 'appreview:update_post' 'review' post.id %}">MODIFY</a>
-                {% endif %}
-
-                <a href="{% url 'appreview:delete_ticket' post.id %}">DELETE</a>
-            </div>
-
+            <img src={{ post.photo.image.url }} alt=""><br/>
         </div>
+        <div class="right-column">
+            <a href="{% url 'appreview:view_ticket' post.id %}">
+                <h3>{{ post.title }}</h3>
+            </a>
+            <p>{{ post.content }}<br/></p>
+            <p>By {{ post.author }}</p>
+            <div class="content-top">
+                <h5 class="time-created">You published this ticket on {{ post.created_on }}</h5>
+            </div>
+        </div>
+        <div class="action-button">
+            {% if post|model_type == "Ticket" %}
+            <a href="{% url 'appreview:update_post' 'ticket' post.id %}">MODIFY</a>
+            {% elif post|model_type == "Review" %}
+            <a href="{% url 'appreview:update_post' 'review' post.id %}">MODIFY</a>
+            {% endif %}
+
+            <a href="{% url 'appreview:delete_ticket' post.id %}">DELETE</a>
+        </div>
+
+    </div>
 </div>
 
 
-    {% elif post|model_type == "Review" %}
+{% elif post|model_type == "Review" %}
 <div class="post">
 
     <div class="ticket">
@@ -51,9 +51,9 @@
             <img src={{ post.ticket.photo.image.url }} alt="">
         </div>
         <div class="right-column">
-                <a href="{% url 'appreview:view_ticket' post.ticket.id %}">
-                        <h3>{{ post.ticket.title }}</h3>
-                </a>
+            <a href="{% url 'appreview:view_ticket' post.ticket.id %}">
+                <h3>{{ post.ticket.title }}</h3>
+            </a>
             <p>{{ post.ticket.content }}<br/></p>
             <p>By {{ post.ticket.author }}</p>
 
@@ -86,7 +86,7 @@
         </div>
     </div>
 </div>
-    {% endif %}
-    {% endfor %}
+{% endif %}
+{% endfor %}
 
 {% endblock content %}

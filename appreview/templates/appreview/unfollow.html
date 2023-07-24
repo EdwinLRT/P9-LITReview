@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	<section class="delete">
-		<h1>SE DÉSABONNER</h1>
-		<p>Êtes-vous sûr de vouloir vous désabonner de {{ user.followed_user|title }} ?
-		<form method="post">
-			{% csrf_token %}
-			<button type="submit">Confirmer la suppression</button>
-		</form>
-	</section>
+<section class="delete">
+    <h1>SE DÉSABONNER</h1>
+    <p>Êtes-vous sûr de vouloir vous désabonner de {{ user.followed_user|title }} ?
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirmer la suppression</button>
+    </form>
+</section>
 
 {% endblock %}

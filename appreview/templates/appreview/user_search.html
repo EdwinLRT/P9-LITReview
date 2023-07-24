@@ -1,9 +1,8 @@
-
 {% block content %}
-  <h2>Recherche d'utilisateurs</h2>
-  <form method="post">
+<h2>Recherche d'utilisateurs</h2>
+<form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Rechercher</button>
-  </form>
+</form>
 {% endblock %}

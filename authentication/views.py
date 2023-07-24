@@ -3,6 +3,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 from . import forms
 
+
 def signup_page(request):
     form = forms.SignupForm()
     message = ''
@@ -15,6 +16,7 @@ def signup_page(request):
             return redirect('appreview:home')  # Redirection vers la vue "home"
     return render(
         request, 'authentication/signup.html', context={'form': form, 'message': message})
+
 
 def login_page(request):
     form = forms.LoginForm()
@@ -34,6 +36,7 @@ def login_page(request):
                 message = 'Identifiants invalides.'
     return render(
         request, 'authentication/login.html', context={'form': form, 'message': message})
+
 
 def logout_page(request):
     logout(request)

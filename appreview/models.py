@@ -1,10 +1,9 @@
-from PIL import Image
 from io import BytesIO
-from django.db import models
-from django.conf import settings
 
+from PIL import Image
+from django.conf import settings
 from django.core.files.uploadedfile import InMemoryUploadedFile
-from django.contrib.auth.models import User
+from django.db import models
 
 
 class Photo(models.Model):
@@ -55,6 +54,7 @@ class Review(models.Model):
 
     def __str__(self):
         return 'Review {} by {}'.format(self.body, self.name)
+
 
 class UserFollows(models.Model):
     user = models.ForeignKey(

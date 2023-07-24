@@ -17,4 +17,4 @@ def get_poster_display(context, user):
 
 @register.filter
 def to_range(number):
-    return range(1, number+1)
+    return range(1, number + 1)

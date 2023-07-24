@@ -1,24 +1,28 @@
-.user{
+.user {
     display: flex;
     justify-content: flex-end;
-    margin-right: 2vw ;
+    margin-right: 2vw;
 }
-.user-button > button{
-    margin : 0 0.5vw;
+
+.user-button > button {
+    margin: 0 0.5vw;
 }
-.feed{
+
+.feed {
     display: flex;
     flex-direction: column;
     margin: auto;
 }
-.followed-users{
+
+.followed-users {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 2vh;
 }
-.discover-users{
+
+.discover-users {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,7 +31,7 @@
 }
 
 
-.ticket{
+.ticket {
 
     display: flex;
 
@@ -41,12 +45,13 @@
     position: relative;
 }
 
-.ticket .left-column img{
+.ticket .left-column img {
     max-width: 12vw;
     margin-left: 2vw;
     margin-right: 2vw;
 }
-.ticket .right-column{
+
+.ticket .right-column {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -54,13 +59,14 @@
     height: 100%;
     margin-top: 20px;
 }
+
 .right-column > h3 > a {
-  /* Réinitialisation des styles */
-  text-decoration: none;
-  color: inherit;
+    /* Réinitialisation des styles */
+    text-decoration: none;
+    color: inherit;
 }
 
-.review-button{
+.review-button {
     position: absolute;
     bottom: 20px;
     right: 20px;
@@ -79,7 +85,7 @@
 
 .user-button button:hover,
 .review-button button:hover {
-  background-color: white;
-  color: #D90429;
-  border: 1px solid #D90429;
+    background-color: white;
+    color: #D90429;
+    border: 1px solid #D90429;
 }

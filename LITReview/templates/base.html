@@ -1,41 +1,39 @@
 {% load static %}
-<!DOCTYPE html>
+<head>
+    <meta charset="utf-8"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'custom.css' %}">
+    <title>LITReview</title>
+</head>
+<body>
+<header>
+    <nav class="nav">
+        <a href="/" class="nav__item nav__item--logo"></a>
+        <a href="/" class="nav__item">Home</a>
+        <a href="/followers/" class="nav__item">Follows</a>
+        <a href="/ticket/create/" class="nav__item">Ask Review</a>
+        <a href="/ticket/create_and_review/" class="nav__item">Create review</a>
+        <a href="/login/" class="nav__item nav__item--login">Login</a>
+    </nav>
+</header>
+{% block content %}
+{% endblock content %}
+<footer>
+    <p>© 2023 LITReview</p>
 
-    <head>
-        <meta charset="utf-8" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link rel="stylesheet" href="{% static 'custom.css' %}">
-        <title>LITReview</title>
-    </head>
-    <body>
-        <header>
-            <nav class="nav">
-                <a href="/" class="nav__item nav__item--logo"></a>
-                <a href="/" class="nav__item">Home</a>
-                <a href="/followers/" class="nav__item">Follows</a>
-                <a href="/ticket/create/" class="nav__item">Ask Review</a>
-                <a href="/ticket/create_and_review/" class="nav__item">Create review</a>
-                <a href="/login/" class="nav__item nav__item--login">Login</a>
-            </nav>
-        </header>
-        {% block content %}
-        {% endblock content %}
-        <footer>
-                <p>© 2023 LITReview</p>
 
-
-            {% if user.is_authenticated %}
-                <p>You are logged in as {{ request.user }}.
-                    <a href="{% url 'logout' %}">Log-out</a>
-                </p>
-            <p><a href="{% url 'appreview:home' %}">Home</a></p>
-            <p><a href="{% url 'appreview:create_ticket' %}">Create a ticket</a></p>
-            <p><a href="{% url 'appreview:create_ticket' %}">Create a review</a></p>
-            {% endif %}
-        </footer>
-    <!-- Bootstrap JS bundle (Popper.js included) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
-    </body>
-</html>
+    {% if user.is_authenticated %}
+    <p>You are logged in as {{ request.user }}.
+        <a href="{% url 'logout' %}">Log-out</a>
+    </p>
+    <p><a href="{% url 'appreview:home' %}">Home</a></p>
+    <p><a href="{% url 'appreview:create_ticket' %}">Create a ticket</a></p>
+    <p><a href="{% url 'appreview:create_ticket' %}">Create a review</a></p>
+    {% endif %}
+</footer>
+<!-- Bootstrap JS bundle (Popper.js included) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>

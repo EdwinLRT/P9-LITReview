@@ -1,38 +1,42 @@
-.search-user{
+.search-user {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .search-form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
+
 body > section > div > div.search-user > form > p {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin: 0;
 }
+
 #id_search_query {
     width: 20vw;
     margin: 2vw;
 }
 
-.following{
+.following {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.followed-by{
+
+.followed-by {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .search-button button {
-    background-color: red;
+    background-color: #D90429;
     color: white;
     border: none;
     padding: 5px 20px;
@@ -42,15 +46,16 @@ body > section > div > div.search-user > form > p {
 
 
 .search-button button:hover {
-  background-color: white;
-  color: red;
-  border: 1px solid red;
+    background-color: white;
+    color: #D90429;
+    border: 1px solid #D90429;
 }
-.user-item{
+
+.user-item {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     width: 60%;
     border: #8D99AE solid 1px;
     background: #EDF2F4;
@@ -58,6 +63,7 @@ body > section > div > div.search-user > form > p {
     border-radius: 20px;
     margin: 2vh;
 }
-.user-item p{
+
+.user-item p {
     margin: 0;
 }

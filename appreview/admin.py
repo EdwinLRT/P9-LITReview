@@ -1,8 +1,7 @@
 from django.contrib import admin
+from .models import Review
 
-# Register your models here.
-from django.contrib import admin
-from .models import Ticket, Review
+
 @admin.register(Review)
 class ReviewsAdmin(admin.ModelAdmin):
     list_display = ('name', 'body', 'ticket', 'created_on', 'active')

@@ -6,23 +6,23 @@
     <link rel="stylesheet" href="{% static 'appreview/css/view_ticket.css' %}">
 </head>
 <section class="post">
-<div class="container">
-    <div class="ticket">
-        <div class="ticket-author-time">
-            <p>Ticket created by {{ ticket.author }} <br> on {{ ticket.created_on }}</p>
-        </div>
-        <div class="product-infos">
-            <div class="product-image">
-                <img src="{{ ticket.photo.image.url }}">
+    <div class="container">
+        <div class="ticket">
+            <div class="ticket-author-time">
+                <p>Ticket created by {{ ticket.author }} <br> on {{ ticket.created_on }}</p>
             </div>
-            <div class="product-title-desc">
-                <h2>{{ ticket.title }}</h2>
-                <p>{{ ticket.content }}</p>
+            <div class="product-infos">
+                <div class="product-image">
+                    <img src="{{ ticket.photo.image.url }}" alt="photo of the product">
+                </div>
+                <div class="product-title-desc">
+                    <h2>{{ ticket.title }}</h2>
+                    <p>{{ ticket.content }}</p>
+                </div>
             </div>
+            <p>{{ ticket.photo.caption }}</p>
         </div>
-        <p>{{ ticket.photo.caption }}</p>
     </div>
-</div>
 
 <div class="container">
     <h3>Reviews</h3>

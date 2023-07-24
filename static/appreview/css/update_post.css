@@ -1,5 +1,3 @@
-/* appreview/css/view_ticket.css */
-
 .post {
     display: flex;
     flex-direction: column;
@@ -8,6 +6,7 @@
 }
 
 .container {
+    position: relative;
     margin: 20px;
     padding: 20px;
     border: 1px solid #8D99AE;
@@ -83,22 +82,13 @@
     color: #888;
 }
 
-body > section > div:nth-child(3) {
-    position: relative;
-}
-
-body > section > div:nth-child(2) > div {
-    position: relative;
-}
-
-.delete-button,
 .action-button {
     position: absolute;
     bottom: 20px;
     right: 20px;
 }
 
-.delete-button,
+
 .action-button {
     background-color: #D90429;
     color: white;
@@ -109,23 +99,17 @@ body > section > div:nth-child(2) > div {
 }
 
 
-.delete-button:hover,
 .action-button:hover {
     background-color: white;
     color: #D90429;
     border: 1px solid #D90429;
 }
 
-body > section > div:nth-child(3) > div {
-    display: flex;
-    flex-direction: column;
-}
-
 .review-form {
     margin-top: 20px;
 }
 
-.review-form .form-group {
+.review-form {
     margin-bottom: 20px;
 }
 

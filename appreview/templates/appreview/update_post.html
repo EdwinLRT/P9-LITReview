@@ -1,13 +1,23 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
-  <h2>Mettre à jour le post</h2>
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    {% if photo_form %}
-      {{ photo_form.as_p }}
-    {% endif %}
-    <button type="submit">Enregistrer</button>
-  </form>
+<head>
+    <link rel="stylesheet" href="{% static 'appreview/css/update_post.css' %}">
+</head>
+<div class="post">
+
+    <div class="container">
+        <h2>Mettre à jour le post</h2>
+        <div class="review-form">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {% if photo_form %}
+                {{ photo_form.as_p }}
+                {% endif %}
+                <button type="submit" class="action-button">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

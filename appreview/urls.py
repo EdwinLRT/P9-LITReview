@@ -3,6 +3,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 import appreview.views
+
 app_name = "appreview"
 urlpatterns = [
     path("", appreview.views.home, name="home"),
@@ -14,12 +15,7 @@ urlpatterns = [
     path('update_post/<str:post_type>/<int:post_id>/', appreview.views.update_post, name='update_post'),
     path('ticket/<int:ticket_id>/delete/', appreview.views.delete_ticket, name="delete_ticket"),
     path('ticket/create_and_review/', appreview.views.create_ticket_and_review, name='create_ticket_and_review'),
-
-#   path("review/add/", appreview.views.create_review, name="create_review"),
-#    path("review/<int:ticket_id>/add/",
-#         appreview.views.create_review_existing_ticket, name="create_review_ticket"),
     path('review/<int:review_id>/delete/', appreview.views.delete_review, name='delete_review'),
-
     path('followers/search/', appreview.views.followers, name='user_search'),
     path('follow_user/<int:user_id>/', appreview.views.follow_user, name='follow_user'),
     path('followers/', appreview.views.followers, name='followers'),

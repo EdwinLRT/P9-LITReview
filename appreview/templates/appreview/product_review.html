@@ -1,11 +1,11 @@
 {% block content %}
-    <h2>Nouvel article</h2>
-    <form method="post" enctype="multipart/form-data">
-        {{ photo_form.as_p }}
-        {{ ticket_form.as_p }}
-        {% csrf_token %}
-        <button type="submit" >Publier</button>
-    </form>
+<h2>Nouvel article</h2>
+<form method="post" enctype="multipart/form-data">
+    {{ photo_form.as_p }}
+    {{ ticket_form.as_p }}
+    {% csrf_token %}
+    <button type="submit">Publier</button>
+</form>
 {% endblock content %}
 
 
