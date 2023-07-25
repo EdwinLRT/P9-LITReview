@@ -61,7 +61,7 @@ def ticket_and_photo_upload(request):
     }
     return render(request, 'appreview/create_ticket.html', context=context)
 
-
+@login_required
 def create_ticket_and_review(request):
     photo_form = forms.PhotoForm()
     ticket_form = forms.TicketForm()
