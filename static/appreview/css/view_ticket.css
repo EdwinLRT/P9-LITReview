@@ -91,6 +91,10 @@ body > section > div:nth-child(2) > div {
     position: relative;
 }
 
+.action-button {
+    margin-top: 20px;
+}
+
 .delete-button,
 .action-button {
     position: absolute;
@@ -144,6 +148,6 @@ body > section > div:nth-child(3) > div {
     box-sizing: border-box;
 }
 
-#id_body {
-    margin-bottom: 50px;
+#id_body{
+    margin-bottom: 40px;
 }

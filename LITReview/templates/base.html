@@ -14,7 +14,11 @@
         <a href="/followers/" class="nav__item">Follows</a>
         <a href="/ticket/create/" class="nav__item">Ask Review</a>
         <a href="/ticket/create_and_review/" class="nav__item">Create review</a>
-        <a href="/login/" class="nav__item nav__item--login">Login</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="nav__item nav__item--logout">Logout</a>
+        {% else %}
+            <a href="/login/" class="nav__item nav__item--login">Login</a>
+        {% endif %}
     </nav>
 </header>
 {% block content %}
